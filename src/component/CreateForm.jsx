@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import FlexContainer from "../component/FlexContainer";
 import { Button } from "react-bootstrap";
 import { createQuestion } from "../util/questionUtil";
+import QuesContext from "../context/question-context";
+import { useContext } from "react";
 
 const initiateFormData = {
   question: "",
@@ -15,6 +17,8 @@ const CreateForm = () => {
   const [formData, setFormData] = useState(initiateFormData);
   const [isTrivia, setIsTirvia] = useState(false);
 
+const context = useContext(QuesContext);
+
   const onChangeHandler = (e) => {
     setFormData({
       ...formData,
@@ -23,9 +27,9 @@ const CreateForm = () => {
   };
 
   const onSubmitHandler = async (e) => {
-    e.preventDefault();    
-  const question = await createQuestion(formData, isTrivia);
-    
+    e.preventDefault();
+    const question = await createQuestion(formData, isTrivia);
+    context.addQuestion(question);
   };
 
   const changeTypeHandler = () => {

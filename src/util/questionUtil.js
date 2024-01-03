@@ -37,7 +37,11 @@ export const createQuestion = async (questionData, trivia) => {
 
     const data = await response.json();
 
-    return data;
+    if (!data.status) {
+      throw new Error({ message: "something went wrong" });
+    }
+
+    return question;
   } catch (err) {
     console.error(err.message);
   }
@@ -47,7 +51,10 @@ const triviaSetUp = (question) => {
   const correct = question.answers[0];
 
   let shuffled = question.answers.slice();
-  shuffled = shuffled.sort(() => Math.random() - 0.5);
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
   const correctAnswerIndex = shuffled.findIndex((answer) => answer === correct);
 
