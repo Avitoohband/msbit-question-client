@@ -35,11 +35,11 @@ make sure server is running
 ### How to interact
 
 <p>
-You will start with home page, anytime click on the header go back to home page.
+You will start with home page, anytime click on the header to get to home page.
 Create button to create question - you can change type of question by clikcing the (Trivia, Poll) Button.
 Vote button to answers questions.
 
-anytime you answer a question you will get red color for wrong answer and green color for correct answers,
+anytime you answer a question you will get red color for wrong answer and green color for correct answer,
 you will also see numbers of votes per answer
 
 Have fun!
