@@ -17,7 +17,7 @@ const CreateForm = () => {
   const [formData, setFormData] = useState(initiateFormData);
   const [isTrivia, setIsTirvia] = useState(false);
 
-const context = useContext(QuesContext);
+  const context = useContext(QuesContext);
 
   const onChangeHandler = (e) => {
     setFormData({
@@ -30,6 +30,7 @@ const context = useContext(QuesContext);
     e.preventDefault();
     const question = await createQuestion(formData, isTrivia);
     context.addQuestion(question);
+    setFormData(initiateFormData);
   };
 
   const changeTypeHandler = () => {
@@ -48,6 +49,7 @@ const context = useContext(QuesContext);
                 type="text"
                 name="question"
                 class="form-control"
+                value={formData.question}
                 id="question"
                 placeholder="Enter question"
                 onChange={onChangeHandler}
@@ -62,6 +64,7 @@ const context = useContext(QuesContext);
               <input
                 type="text"
                 name="answer1"
+                value={formData.answer1}
                 class="form-control"
                 id="ans1"
                 placeholder="Enter Answer"
@@ -76,6 +79,7 @@ const context = useContext(QuesContext);
                 type="text"
                 name="answer2"
                 class="form-control"
+                value={formData.answer2}
                 id="ans2"
                 placeholder="Enter Answer"
                 onChange={onChangeHandler}
@@ -89,6 +93,7 @@ const context = useContext(QuesContext);
                 type="text"
                 name="answer3"
                 class="form-control"
+                value={formData.answer3}
                 id="ans3"
                 placeholder="Enter Answer"
                 onChange={onChangeHandler}
@@ -102,6 +107,7 @@ const context = useContext(QuesContext);
                 type="text"
                 name="answer4"
                 class="form-control"
+                value={formData.answer4}
                 id="ans4"
                 placeholder="Enter Answer"
                 onChange={onChangeHandler}

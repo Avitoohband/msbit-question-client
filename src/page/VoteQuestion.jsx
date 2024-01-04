@@ -14,8 +14,8 @@ const VoteQuestion = () => {
             return <QuestionCard key={question._id} data={question} />;
           })
         : !context.initialized
-        ? "loading"
-        : "No Question!"}   
+        ? "loading..."
+        : "No Question!"}
     </FlexContainer>
   );
 };

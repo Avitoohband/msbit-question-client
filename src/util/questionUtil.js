@@ -41,7 +41,23 @@ export const createQuestion = async (questionData, trivia) => {
       throw new Error({ message: "something went wrong" });
     }
 
+    question["id"] = data.questionId;
+
     return question;
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+export const voteAnswer = async (questionId, answerIndex) => {
+  try {
+    const url = `http://localhost:3001/api/question/${questionId}/${answerIndex}`;
+    const response = await fetch(url, { method: "GET" });
+
+    if (response.status !== 204 && response.status !== 400) {
+      const data = await response.json();      
+      return data.numOfVotes;
+    }
   } catch (err) {
     console.error(err.message);
   }

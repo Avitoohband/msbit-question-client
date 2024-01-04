@@ -25,14 +25,15 @@ export const QuesProvider = ({ children }) => {
     }
   };
 
-  const updateQuestion = (index, updatedQuestion) => {
-    questions[index] = updateQuestion;
-    setQuestions(...questions);
+  const updateNumberOfVotes = (data, answerIndex, numbOfVotes) => {
+    const questionIndex = questions.findIndex((q) => q._id === data._id);
+    questions[questionIndex].answers[answerIndex].numberOfVotes = numbOfVotes;
+    console.log(questions);
   };
 
   return (
     <QuesContext.Provider
-      value={{ questions, addQuestion, updateQuestion, initialized }}
+      value={{ questions, addQuestion, updateNumberOfVotes, initialized }}
     >
       {children}
     </QuesContext.Provider>
