@@ -1,4 +1,4 @@
-# Question Asking Platform
+# Question Asking Platform - Client
 
 <h2>MSbit Assignment</h2>
 
